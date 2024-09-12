@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyGYM App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pantalla 1: Splash -->
+    <div id="splash-screen" class="screen active">
+        <h1>Bienvenid@ a MyGYM App</h1>
+          <button onclick="goToNextScreen()">Continuar</button>
+    </div>
+
+    <!-- Pantalla 2: Selección de Nivel -->
+    <div id="level-screen" class="screen">
+        <h2>Elige tu Nivel</h2>
+        <button onclick="selectLevel('novato')">Novato</button>
+        <button onclick="selectLevel('intermedio')">Intermedio</button>
+        <button onclick="selectLevel('saiyajin')">Saiyajin</button>
+    </div>
+
+    <!-- Pantalla 3: Selección de Objetivo -->
+    <div id="goal-screen" class="screen">
+        <h2>¿Cuál es tu objetivo?</h2>
+        <button onclick="selectGoal('musculo')">Ganar Músculo</button>
+        <button onclick="selectGoal('peso')">Perder Peso</button>
+        <button onclick="selectGoal('resistencia')">Mejorar Resistencia</button>
+    </div>
+
+    <!-- Pantalla 4: Selección de Días de Entrenamiento -->
+    <div id="days-screen" class="screen">
+        <h2>¿Cuántos días entrenarás?</h2>
+        <button onclick="selectDays(3)">3 Días</button>
+        <button onclick="selectDays(5)">5 Días</button>
+        <button onclick="selectDays(7)">7 Días</button>
+    </div>
+
+    <!-- Pantalla 5.x.x: Rutinas personalizadas -->
+    <div id="routine-screen" class="screen">
+        <h2 id="routine-title">Rutina Personalizada</h2>
+        <p id="routine-description">Aquí irá la rutina según tus selecciones.</p>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
