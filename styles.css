@@ -113,3 +113,28 @@ button:active {
 .hidden {
     display: none;
 }
+
+/* Estilo general para la sección de progreso */
+#workout-progress {
+    margin-top: 20px;
+}
+
+#workout-progress h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#workout-progress button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+.exercise {
+    margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.5);
+}

@@ -10,7 +10,7 @@
     <!-- Pantalla 1: Splash -->
     <div id="splash-screen" class="screen active">
         <h1>Bienvenid@ a MyGYM App</h1>
-          <button onclick="goToNextScreen()">Continuar</button>
+        <button onclick="goToNextScreen()">Continuar</button>
     </div>
 
     <!-- Pantalla 2: Selección de Nivel -->
@@ -37,10 +37,108 @@
         <button onclick="selectDays(7)">7 Días</button>
     </div>
 
-    <!-- Pantalla 5.x.x: Rutinas personalizadas -->
-    <div id="routine-screen" class="screen">
-        <h2 id="routine-title">Rutina Personalizada</h2>
-        <p id="routine-description">Aquí irá la rutina según tus selecciones.</p>
+    <!-- Pantalla 5.1.0: Nov-Muscle-3days-Selección de Día de Entrenamiento -->
+    <div id="select-day-screen1" class="screen">
+        <h2>Elige el día de entrenamiento</h2>
+        <button onclick="showRoutine('routine-nov-muscle1-day1')">Día 1: Pecho y tríceps</button>
+        <button onclick="showRoutine('routine-nov-muscle1-day2')">Día 2: Espalda y bíceps</button>
+        <button onclick="showRoutine('routine-nov-muscle1-day3')">Día 3: Piernas y hombros</button>
+    </div>
+
+    <!-- Pantalla 5.1.1: Rutina personalizada - Día 1: Pecho y tríceps -->
+    <div id="routine-nov-muscle1-day1" class="screen">
+        <h2 id="routine-title">Día 1: Pecho y tríceps</h2>
+        <div class="exercise">
+            <input type="checkbox" id="exercise1" onclick="saveProgress('exercise1')">
+            <label for="exercise1">Press de banca - 4 series de 8-12 repeticiones</label>
+            <p>Cómo hacerlo: Acuéstate en un banco plano con una barra. Baja la barra hasta el pecho y luego empújala hacia arriba.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise2" onclick="saveProgress('exercise2')">
+            <label for="exercise2">Press inclinado con mancuernas - 3 series de 10-12 repeticiones</label>
+            <p>Cómo hacerlo: Acuéstate en un banco inclinado con una mancuerna en cada mano. Baja las mancuernas hasta el pecho y luego empújalas hacia arriba.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise3" onclick="saveProgress('exercise3')">
+            <label for="exercise3">Aperturas con mancuernas - 3 series de 12 repeticiones</label>
+            <p>Cómo hacerlo: Acuéstate en un banco plano con una mancuerna en cada mano. Abre los brazos hacia los lados y luego júntalos de nuevo.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise4" onclick="saveProgress('exercise4')">
+            <label for="exercise4">Fondos en paralelas - 3 series de 8-10 repeticiones</label>
+            <p>Cómo hacerlo: Usa las barras paralelas para bajar y subir tu cuerpo, enfocándote en los tríceps.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise5" onclick="saveProgress('exercise5')">
+            <label for="exercise5">Extensión de triceps con cuerda - 3 series de 12-15 repeticiones</label>
+            <p>Cómo hacerlo: Usa una polea alta con una cuerda. Extiende los brazos hacia abajo y luego regresa a la posición inicial.</p>
+        </div>
+                <button onclick="goBack('select-day-screen1')">Regresar</button>
+                <button onclick="resetProgress(['exercise1', 'exercise2', 'exercise3', 'exercise4', 'exercise5'])">Restablecer Progreso</button>
+    </div>
+
+    <!-- Pantalla 5.1.2: Rutina personalizada - Día 2: Espalda y bíceps -->
+    <div id="routine-nov-muscle1-day2" class="screen">
+        <h2 id="routine-title">Día 2: Espalda y bíceps</h2>
+        <div class="exercise">
+            <input type="checkbox" id="exercise6" onclick="saveProgress('exercise6')">
+            <label for="exercise6">Dominadas asistidas - 4 series de 6-8 repeticiones</label>
+            <p>Cómo hacerlo: Usa una barra para levantar tu cuerpo hasta que tu barbilla esté por encima de la barra.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise7" onclick="saveProgress('exercise7')">
+            <label for="exercise7">Remo con barra - 4 series de 8-10 repeticiones</label>
+            <p>Cómo hacerlo: Inclínate hacia adelante con una barra. Lleva la barra hacia tu abdomen y luego bájala.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise8" onclick="saveProgress('exercise8')">
+            <label for="exercise8">Remo con mancuernas a una mano - 3 series de 10-12 repeticiones</label>
+            <p>Cómo hacerlo: Usa una mancuerna y apóyate en un banco. Lleva la mancuerna hacia tu abdomen y luego bájala.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise9" onclick="saveProgress('exercise9')">
+            <label for="exercise9">Curl de bíceps con barra - 3 series de 10-12 repeticiones</label>
+            <p>Cómo hacerlo: Usa una barra para levantarla hacia tus hombros y luego bájala.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise10" onclick="saveProgress('exercise10')">
+            <label for="exercise10">Curl de bíceps con mancuernas alterno - 3 series de 12 repeticiones</label>
+            <p>Cómo hacerlo: Usa una mancuerna en cada mano y alterna levantando cada una hacia tus hombros.</p>
+        </div>
+        <button onclick="goBack('select-day-screen1')">Regresar</button>
+        <button onclick="resetProgress(['exercise6', 'exercise7', 'exercise8', 'exercise9', 'exercise10'])">Restablecer Progreso</button>
+    </div>
+
+    <!-- Pantalla 5.1.3: Rutina personalizada - Día 3: Piernas y hombros -->
+    <div id="routine-nov-muscle1-day3" class="screen">
+        <h2 id="routine-title">Día 3: Piernas y hombros</h2>
+        <div class="exercise">
+            <input type="checkbox" id="exercise11" onclick="saveProgress('exercise11')">
+            <label for="exercise11">Sentadillas - 4 series de 10-12 repeticiones</label>
+            <p>Cómo hacerlo: Coloca una barra en tus hombros y baja tu cuerpo como si te fueras a sentar, luego sube.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise12" onclick="saveProgress('exercise12')">
+            <label for="exercise12">Prensa de piernas - 4 series de 12-15 repeticiones</label>
+            <p>Cómo hacerlo:  Usa la máquina de prensa para empujar el peso con tus piernas.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise13" onclick="saveProgress('exercise13')">
+            <label for="exercise13">Peso muerto rumano - 3 series de 10-12 repeticiones</label>
+            <p>Cómo hacerlo: Usa una barra y baja el peso manteniendo las piernas ligeramente flexionadas, luego sube.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise14" onclick="saveProgress('exercise14')">
+            <label for="exercise14">Press militar con barra - 4 series de 8-10 repeticiones</label>
+            <p>Cómo hacerlo: Usa una barra para levantarla desde tus hombros hacia arriba.</p>
+        </div>
+        <div class="exercise">
+            <input type="checkbox" id="exercise15" onclick="saveProgress('exercise15')">
+            <label for="exercise15">Elevaciones laterales con mancuernas - 3 series de 12-15 repeticiones</label>
+            <p>Cómo hacerlo: Usa una mancuerna en cada mano y levanta los brazos hacia los lados.</p>
+        </div>
+        <button onclick="goBack('select-day-screen1')">Regresar</button>
+        <button onclick="resetProgress(['exercise11', 'exercise12', 'exercise13', 'exercise14', 'exercise15'])">Restablecer Progreso</button>
     </div>
 
     <script src="scripts.js"></script>

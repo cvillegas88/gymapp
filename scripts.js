@@ -2,56 +2,82 @@ let selectedLevel = '';
 let selectedGoal = '';
 let selectedDays = 0;
 
-// Función para pasar a la pantalla de selección de nivel desde la pantalla de bienvenida
 function goToNextScreen() {
-    showScreen('level-screen');
-}
-
-function showScreen(screenId) {
-    const currentScreen = document.querySelector('.screen.active');
-    const newScreen = document.getElementById(screenId);
-
-    if (currentScreen && currentScreen !== newScreen) {
-        // Aplica la animación de salida a la pantalla actual
-        currentScreen.classList.add('fade-out');
-
-        // Espera el tiempo de animación de salida antes de ocultar la pantalla actual
-        setTimeout(() => {
-            currentScreen.classList.remove('active', 'fade-out');
-            currentScreen.classList.add('hidden');
-
-            // Muestra la nueva pantalla después de ocultar la anterior
-            newScreen.classList.remove('hidden');
-            newScreen.classList.add('fade-in', 'active');
-        }, 500); // Tiempo de animación de salida
-    } else {
-        // Si no hay pantalla actual activa, simplemente muestra la nueva pantalla
-        newScreen.classList.remove('hidden');
-        newScreen.classList.add('fade-in', 'active');
-    }
+    changeScreen('level-screen');
 }
 
 function selectLevel(level) {
     selectedLevel = level;
-    showScreen('goal-screen');
+    changeScreen('goal-screen');
 }
 
 function selectGoal(goal) {
     selectedGoal = goal;
-    showScreen('days-screen');
+    changeScreen('days-screen');
 }
 
 function selectDays(days) {
     selectedDays = days;
-    displayRoutine();
-    showScreen('routine-screen');
+
+    // Cuando el usuario selecciona 3 días, muestra la pantalla de selección de días.
+    if (selectedDays === 3 && selectedLevel === 'novato' && selectedGoal === 'musculo') {
+        changeScreen('select-day-screen1');
+    }
 }
 
-function displayRoutine() {
-    const routineTitle = document.getElementById('routine-title');
-    const routineDescription = document.getElementById('routine-description');
+// Función para navegar a la rutina correcta
+function navigateToRoutine() {
+    hideAllScreens();
 
-    let routine = `Rutina para ${selectedLevel}, objetivo: ${selectedGoal}, entrenando ${selectedDays} días a la semana.`;
-    routineTitle.textContent = 'Rutina Personalizada';
-    routineDescription.textContent = routine;
+    if (selectedLevel === 'novato' && selectedGoal === 'musculo' && selectedDays === 3) {
+        document.getElementById('routine-nov-muscle1-day1').classList.add('active');
+    }
+    // Aquí puedes agregar más condiciones para otros niveles, objetivos y días
+}
+
+// Función para ocultar todas las pantallas
+function hideAllScreens() {
+    const screens = document.querySelectorAll('.screen');
+    screens.forEach(screen => screen.classList.remove('active'));
+}
+
+// Función para guardar el progreso del ejercicio
+function saveProgress(exerciseId) {
+    const checkbox = document.getElementById(exerciseId);
+    localStorage.setItem(exerciseId, checkbox.checked);
+}
+
+// Función para cargar el progreso de los ejercicios
+function loadProgress() {
+    const exercises = ['exercise1', 'exercise2', 'exercise3', 'exercise4', 'exercise5', 'exercise6', 'exercise7', 'exercise8', 'exercise9', 'exercise10', 'exercise11', 'exercise12', 'exercise13', 'exercise14', 'exercise15']; // IDs de los ejercicios
+    exercises.forEach(exerciseId => {
+        const checked = localStorage.getItem(exerciseId) === 'true';
+        document.getElementById(exerciseId).checked = checked;
+    });
+}
+
+// Llamar a loadProgress al cargar la página
+window.onload = function() {
+    loadProgress();
+};
+
+function showRoutine(routineId) {
+    changeScreen(routineId);
+}
+
+function resetProgress(exercises) {
+    exercises.forEach(exerciseId => {
+        localStorage.removeItem(exerciseId);
+        document.getElementById(exerciseId).checked = false;
+    });
+}
+
+function changeScreen(screenId) {
+    const screens = document.querySelectorAll('.screen');
+    screens.forEach(screen => screen.classList.remove('active'));
+    document.getElementById(screenId).classList.add('active');
+}
+
+function goBack(previousScreenId) {
+    changeScreen(previousScreenId);
 }
